@@ -1,0 +1,51 @@
+
+<div 
+  class="sidebar d-flex flex-column p-3 bg-light"
+  [class.collapsed]="isCollapsed">
+  
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="fs-5 fw-semibold" *ngIf="!isCollapsed">Dashboard</span>
+
+    <!-- Toggle Button -->
+    <button class="btn btn-sm btn-outline-secondary" (click)="toggleSidebar()">
+      <i 
+        class="bi" 
+        [ngClass]="isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'">
+      </i>
+    </button>
+  </div>
+
+  <hr />
+
+  <!-- Links -->
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a routerLink="/vehicle" routerLinkActive="active" class="nav-link text-dark">
+        <i class="bi bi-car-front me-2"></i>
+        <span *ngIf="!isCollapsed">Vehicle</span>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/customer" routerLinkActive="active" class="nav-link text-dark" role="button">
+        <i class="bi bi-people me-2"></i>
+        <span *ngIf="!isCollapsed">Customer</span>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/agreement" routerLinkActive="active" class="nav-link text-dark">
+        <i class="bi bi-file-earmark-text me-2"></i>
+        <span *ngIf="!isCollapsed">Agreement</span>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/invoice" routerLinkActive="active" class="nav-link text-dark">
+        <i class="bi bi-receipt me-2"></i>
+        <span *ngIf="!isCollapsed">Invoice</span>
+      </a>
+    </li>
+  </ul>
+</div>
