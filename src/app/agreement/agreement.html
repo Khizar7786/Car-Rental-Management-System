@@ -1,0 +1,91 @@
+<div class="container mt-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Agreements</h4>
+    <button class="btn btn-primary" (click)="openForm()">+ New Agreement</button>
+  </div>
+
+  <!-- ================= LIST VIEW ================= -->
+  <div *ngIf="!showForm" class="card p-3 shadow-sm">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Vehicle</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Rate</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let a of agreements; let i = index">
+          <td>{{ a.customer }}</td>
+          <td>{{ a.vehicle }}</td>
+          <td>{{ a.startDate }}</td>
+          <td>{{ a.endDate }}</td>
+          <td>{{ a.rate }}</td>
+
+          <td>
+            <button class="btn btn-sm btn-primary me-2" (click)="editAgreement(i)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteAgreement(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- ================= FORM VIEW ================= -->
+  <div *ngIf="showForm" class="card shadow-sm p-4">
+
+    <h5 class="mb-3">{{ isEdit ? 'Edit' : 'New' }} Agreement</h5>
+
+    <form [formGroup]="agreementForm" (ngSubmit)="saveAgreement()">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label>Customer</label>
+          <select class="form-select" formControlName="customer">
+            <option *ngFor="let c of customers" [value]="c">{{ c }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label>Vehicle</label>
+          <select class="form-select" formControlName="vehicle">
+            <option *ngFor="let v of vehicles" [value]="v">{{ v }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label>Start Date</label>
+          <input type="datetime-local" class="form-control" formControlName="startDate">
+        </div>
+
+        <div class="col-md-6">
+          <label>End Date</label>
+          <input type="datetime-local" class="form-control" formControlName="endDate">
+        </div>
+
+        <div class="col-md-6">
+          <label>Rate</label>
+          <input type="number" class="form-control" formControlName="rate">
+        </div>
+
+      </div>
+
+      <div class="mt-4 d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>
+        <button type="submit" class="btn btn-success">
+          {{ isEdit ? 'Update' : 'Save' }}
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>

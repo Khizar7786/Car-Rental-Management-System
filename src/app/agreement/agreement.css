@@ -1,0 +1,12 @@
+.card {
+  border-radius: 12px;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.btn-success {
+  background-color: #0d9488;
+  border: none;
+}

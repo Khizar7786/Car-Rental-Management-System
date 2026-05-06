@@ -6,10 +6,15 @@ import {  SidebarComponent } from './sidebar/sidebar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NavbarComponent,LoginComponent,SidebarComponent],
+  imports: [RouterOutlet,NavbarComponent,SidebarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('car-rental');
+    protected readonly title = signal('car-rental');
+    sidebarCollapsed = false;
+
+  onSidebarToggle(state: boolean) {
+    this.sidebarCollapsed = state;
+  }
 }

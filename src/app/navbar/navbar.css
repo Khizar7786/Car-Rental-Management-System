@@ -1,7 +1,14 @@
+.logo{
+  color:black;
+  font-weight: bold;
+  font-family: cursive;
+  color: blue;
+}
+
 .top-bar {
   display: block;
   width: 100%;
-  background: #C2EBFF;
+  background: #bed4f3;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.3px;

@@ -1,0 +1,14 @@
+
+
+/* Sidebar wrapper controls width */
+.sidebar-wrapper {
+  transition: width 0.8s ease;
+}
+
+/* Main content automatically fills remaining space */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-x: hidden;
+  background: #f8f9fa;
+}

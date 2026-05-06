@@ -1,0 +1,100 @@
+
+<div class="container mt-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Invoices</h4>
+    <button class="btn btn-primary" (click)="openForm()">+ New Invoice</button>
+  </div>
+
+  <!-- ================= LIST VIEW ================= -->
+  <div *ngIf="!showForm" class="card p-3 shadow-sm">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Invoice No</th>
+          <th>Customer</th>
+          <th>Plate No</th>
+          <th>Rate</th>
+          <th>Start Date</th>
+          <th>Period</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let inv of invoices; let i = index">
+          <td>{{ inv.invoiceNo }}</td>
+          <td>{{ inv.customer }}</td>
+          <td>{{ inv.plateNo }}</td>
+          <td>{{ inv.rate }}</td>
+          <td>{{ inv.startDate }}</td>
+          <td>{{ inv.period }}</td>
+          <td>{{ inv.status }}</td>
+
+          <td>
+            <button class="btn btn-sm btn-primary me-2" (click)="editInvoice(i)">Edit</button>
+            <button class="btn btn-sm btn-success me-2" (click)="generateInvoice(i)">Generate</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteInvoice(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- ================= FORM VIEW ================= -->
+  <div *ngIf="showForm" class="card shadow-sm p-4">
+
+    <h5 class="mb-3">{{ isEdit ? 'Edit' : 'New' }} Invoice</h5>
+
+    <form [formGroup]="invoiceForm" (ngSubmit)="saveInvoice()">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label>Invoice No</label>
+          <input type="text" class="form-control" formControlName="invoiceNo">
+        </div>
+
+        <div class="col-md-6">
+          <label>Customer</label>
+          <select class="form-select" formControlName="customer">
+            <option *ngFor="let c of customers" [value]="c">{{ c }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label>Plate No</label>
+          <input type="text" class="form-control" formControlName="plateNo">
+        </div>
+
+        <div class="col-md-6">
+          <label>Rate</label>
+          <input type="number" class="form-control" formControlName="rate">
+        </div>
+
+        <div class="col-md-6">
+          <label>Start Date</label>
+          <input type="date" class="form-control" formControlName="startDate">
+        </div>
+
+        <div class="col-md-6">
+          <label>Period</label>
+          <input type="text" class="form-control" formControlName="period">
+        </div>
+
+      </div>
+
+      <div class="mt-4 d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>
+        <button type="submit" class="btn btn-success">
+          {{ isEdit ? 'Update' : 'Save' }}
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
