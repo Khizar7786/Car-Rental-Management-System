@@ -1,0 +1,219 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h4>Rental Agreements</h4>
+
+    <button
+      class="btn btn-primary"
+      (click)="openForm()">
+
+      + New Agreement
+
+    </button>
+
+  </div>
+
+  <!-- LIST -->
+
+  <div
+    *ngIf="!showForm"
+    class="card p-3 shadow-sm">
+
+    <table class="table table-bordered table-hover">
+
+      <thead>
+
+        <tr>
+          <th>Customer</th>
+          <th>Vehicle</th>
+          <th>Plate No</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Rate/Day</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th width="180">Actions</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let a of (agreements$ | async)">
+
+          <td>{{ a.customerName }}</td>
+
+          <td>{{ a.vehicleName }}</td>
+
+          <td>{{ a.plateNo }}</td>
+
+          <td>{{ a.startDate | date }}</td>
+
+          <td>{{ a.endDate | date }}</td>
+
+          <td>{{ a.ratePerDay }}</td>
+
+          <td>{{ a.totalAmount }}</td>
+
+          <td>{{ a.status }}</td>
+
+          <td>
+
+            <button
+              class="btn btn-sm btn-primary me-2"
+              (click)="editAgreement(a)">
+
+              Edit
+
+            </button>
+
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteAgreement(a.id)">
+
+              Delete
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- FORM -->
+
+  <div
+    *ngIf="showForm"
+    class="card shadow-sm p-4">
+
+    <h5 class="mb-3">
+
+      {{ isEdit ? 'Edit Agreement' : 'New Agreement' }}
+
+    </h5>
+
+    <form
+      [formGroup]="agreementForm"
+      (ngSubmit)="saveAgreement()">
+
+      <div class="row g-3">
+
+        <div class="col-md-6">
+
+          <label>Customer</label>
+
+          <select
+            class="form-select"
+            formControlName="customerId">
+
+            <option value="">
+              Select Customer
+            </option>
+
+            <option
+              *ngFor="let c of customers"
+              [value]="c.id">
+
+              {{ c.fullName }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <label>Vehicle</label>
+
+          <select
+            class="form-select"
+            formControlName="vehicleId">
+
+            <option value="">
+              Select Vehicle
+            </option>
+
+            <option
+              *ngFor="let v of vehicles"
+              [value]="v.id">
+
+              {{ v.make }}
+              {{ v.model }}
+              ({{ v.plateNo }})
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <label>Start Date</label>
+
+          <input
+            type="date"
+            class="form-control"
+            formControlName="startDate">
+
+        </div>
+
+        <div class="col-md-6">
+
+          <label>End Date</label>
+
+          <input
+            type="date"
+            class="form-control"
+            formControlName="endDate">
+
+        </div>
+
+        <div class="col-12">
+
+          <label>Notes</label>
+
+          <textarea
+            rows="3"
+            class="form-control"
+            formControlName="notes">
+
+          </textarea>
+
+        </div>
+
+      </div>
+
+      <div class="mt-4 d-flex justify-content-end gap-2">
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeForm()">
+
+          Cancel
+
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-success">
+
+          {{ isEdit ? 'Update' : 'Save' }}
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

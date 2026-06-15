@@ -1,0 +1,19 @@
+.signup-wrapper {
+  background: linear-gradient(135deg, #e0f2ff, #f7f9fc);
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15);
+}

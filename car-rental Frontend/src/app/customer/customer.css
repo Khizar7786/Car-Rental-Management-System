@@ -1,0 +1,12 @@
+.banner {
+  background: linear-gradient(135deg, #0d6efd, #0a58ca);
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+}
+
+.btn-primary {
+  min-width: 180px;
+}

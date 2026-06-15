@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.layout-wrapper {
+  display: flex;
+  height: calc(100vh - 60px); /* adjust navbar height */
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar-wrapper {
+  transition: width 0.3s ease;
+  height: 100%;
+}
+
+/* Main content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f8f9fa;
+  height: 100%;
+}

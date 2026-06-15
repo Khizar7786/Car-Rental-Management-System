@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CarRentalAPI",
+    "\\CarRentalAPI\\Controllers",
+    "\\CarRentalAPI\\Data"
+  ],
+  "SelectedNode": "\\CarRentalAPI\\Data\\AppDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

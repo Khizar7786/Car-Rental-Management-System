@@ -1,0 +1,14 @@
+.banner {
+ background: linear-gradient(135deg, #6688F6, #6A5CFF, #00C6FF);
+}
+
+.car-img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card {
+  border-radius: 12px;
+}

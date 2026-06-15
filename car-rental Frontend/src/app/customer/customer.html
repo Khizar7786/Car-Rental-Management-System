@@ -1,0 +1,156 @@
+<div class="container mt-3">
+
+  <!-- Banner -->
+  <div class="banner mb-4 p-4 text-center text-white rounded">
+    <h3>CUSTOMER MANAGEMENT</h3>
+    <p>Register and Manage Rental Customers</p>
+  </div>
+
+  <!-- Add Customer Form -->
+  <div class="card shadow p-4 mb-4">
+
+    <h5 class="mb-3">Register Customer</h5>
+
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <input
+          class="form-control"
+          placeholder="Full Name"
+          [(ngModel)]="customer.fullName">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          class="form-control"
+          placeholder="Email"
+          [(ngModel)]="customer.email">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="customer.password">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          class="form-control"
+          placeholder="Phone"
+          [(ngModel)]="customer.phone">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          class="form-control"
+          placeholder="Address"
+          [(ngModel)]="customer.address">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <input
+          class="form-control"
+          placeholder="License Number"
+          [(ngModel)]="customer.licenseNo">
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <input
+          class="form-control"
+          placeholder="National ID"
+          [(ngModel)]="customer.nationalId">
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="addCustomer()">
+      Register Customer
+    </button>
+
+  </div>
+
+<h4 class="text-center mb-4">
+  Customer Records
+</h4>
+
+<div class="table-responsive">
+
+  <table class="table table-hover align-middle shadow-sm">
+
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>License</th>
+        <th>Status</th>
+        <th class="text-end">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let c of customers; let i = index">
+
+        <!-- Index -->
+        <td>{{ i + 1 }}</td>
+
+        <!-- Name -->
+        <td class="fw-bold">
+          {{ c.fullName }}
+        </td>
+
+        <!-- Email -->
+        <td>
+          {{ c.email }}
+        </td>
+
+        <!-- Phone -->
+        <td>
+          {{ c.phone }}
+        </td>
+
+        <!-- License -->
+        <td>
+          {{ c.licenseNo }}
+        </td>
+
+        <!-- Status -->
+        <td>
+          <span
+            class="badge"
+            [ngClass]="c.isActive ? 'bg-success' : 'bg-danger'">
+
+            {{ c.isActive ? 'Active' : 'Inactive' }}
+
+          </span>
+        </td>
+
+        <!-- Action -->
+        <td class="text-end">
+
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="deleteCustomer(c.id)"
+            [disabled]="!c.isActive">
+
+            Deactivate
+
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+</div>
