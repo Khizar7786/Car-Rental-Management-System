@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class AgreementService {
 
-  private apiUrl = 'http://localhost:5000/api/agreements';
+  private apiUrl = 'https://carzest-brd8fhbderagenbq.koreasouth-01.azurewebsites.net/api/agreements';
 
   constructor(private http: HttpClient) {}
 

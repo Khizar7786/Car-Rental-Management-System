@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class InvoiceService {
 
-  private apiUrl = 'http://localhost:5000/api/invoices';
+  private apiUrl = 'https://carzest-brd8fhbderagenbq.koreasouth-01.azurewebsites.net/api/invoices';
 
   constructor(private http: HttpClient) {}
 
