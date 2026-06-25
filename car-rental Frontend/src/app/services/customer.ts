@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CustomerService {
 
-  private apiUrl = 'http://localhost:5000/api/customers';
+  private apiUrl = 'https://carzest-brd8fhbderagenbq.koreasouth-01.azurewebsites.net/api/customers';
 
   constructor(private http: HttpClient) {}
 

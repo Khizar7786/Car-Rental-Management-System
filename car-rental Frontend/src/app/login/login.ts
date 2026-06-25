@@ -24,7 +24,7 @@ onLogin() {
     password: this.password
   };
 
-  this.http.post('http://localhost:5000/api/auth/login', loginData)
+  this.http.post('https://carzest-brd8fhbderagenbq.koreasouth-01.azurewebsites.net/api/auth/login', loginData)
     .subscribe({
       next: (response: any) => {
       if (response.success && response.data?.token) {

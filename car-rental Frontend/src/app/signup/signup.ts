@@ -41,7 +41,7 @@ export class SignupComponent {
     };
 
     this.http.post(
-      'http://localhost:5000/api/auth/register',
+      'https://carzest-brd8fhbderagenbq.koreasouth-01.azurewebsites.net/api/auth/register',
       registerData
     ).subscribe({
       next: (response: any) => {
